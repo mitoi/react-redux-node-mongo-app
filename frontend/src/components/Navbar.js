@@ -18,26 +18,11 @@ class Navbar extends Component {
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">           
                     <a href="" className="nav-link" onClick={this.onLogout.bind(this)}>
-                        <img src={user.avatar} alt={user.name} title={user.name}
-                            className="rounded-circle"
-                            style={{ width: '25px', marginRight: '5px'}} />
+                        
                                 Logout
                     </a>
                 </li>
-
-                <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                    </a>
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a className="dropdown-item" href="#">Action</a>
-                    <a className="dropdown-item" href="#">Another action</a>
-                    <div className="dropdown-divider"></div>
-                    <a className="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-          </ul>
-          
+          </ul>          
         )
       const guestLinks = (
         <ul className="navbar-nav ml-auto">
@@ -71,6 +56,6 @@ Navbar.propTypes = {
 
 const mapStateToProps = (state) => ({
     auth: state.auth
-})
+});
 
 export default connect(mapStateToProps, { logoutUser })(withRouter(Navbar));
