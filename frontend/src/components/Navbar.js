@@ -17,9 +17,8 @@ class Navbar extends Component {
         const authLinks = (
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">           
-                    <a href="" className="nav-link" onClick={this.onLogout.bind(this)}>
-                        
-                                Logout
+                    <a href="" className="nav-link" onClick={this.onLogout.bind(this)}>                        
+                        Logout
                     </a>
                 </li>
           </ul>          
@@ -37,7 +36,7 @@ class Navbar extends Component {
         return(
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <img src={require("../logo.svg")} style={{width:"55px"}}/>
-                <Link className="navbar-brand" to="/">Redux Node Auth</Link>
+                <Link className="navbar-brand" to="/">Jemekeria Jmekeriilor</Link>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
