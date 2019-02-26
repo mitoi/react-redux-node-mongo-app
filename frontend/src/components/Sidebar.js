@@ -1,31 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Dashboard from './Dashboard';
+import {setCurrentView} from '../actions/routeView';
+import store from '../store';
+import { SET_CURRENT_VIEW } from '../actions/types';
+
 
 class Sidebar extends Component {
-    constructor(props) {
-        super(props);
+
+    navigateToView = (e) => {
+        e.preventDefault();
+        const view = e.target.attributes.viewname.nodeValue;
+        store.dispatch(setCurrentView(view, SET_CURRENT_VIEW));
     }
 
     render() {       
-        const { isAuthenticated, user } = this.props.auth;
+        const { user } = this.props.auth;
         return (
-            <div class="d-flex" id="wrapper">
-                <div class="bg-light border-right" id="sidebar-wrapper">
-                    <div class="sidebar-heading">
+            <div className="d-flex" id="wrapper">
+                <div className="bg-light border-right" id="sidebar-wrapper">
+                    <div className="sidebar-heading">
                         <img src={require('../profile_pic.jpg')} alt={user.name} title={user.name}
                                     className="rounded-circle"
                                     style={{ width: '45px', marginRight: '15px'}} />
                         {user.name}
                     </div>
-                    <div class="list-group list-group-flush">
-                        <Link to="/dashboard" class="list-group-item list-group-item-action bg-light" >Dashboard</Link>
-                        <Link to="/orders" class="list-group-item list-group-item-action bg-light" >Orders</Link>
-                        <Link to="/Dashboard" class="list-group-item list-group-item-action bg-light" >Products</Link>
-                        <Link to="/Dashboard" class="list-group-item list-group-item-action bg-light" >CRM</Link>
-                        <Link to="/Dashboard" class="list-group-item list-group-item-action bg-light" >Marketing</Link>
-                        <Link to="/Dashboard" class="list-group-item list-group-item-action bg-light" >Reports</Link>
+                    <div className="list-group list-group-flush">
+                        <Link to='/dashboard' onClick={this.navigateToView} viewname = "Dashboard" className="list-group-item list-group-item-action bg-light" >Dashboard</Link>
+                        <Link to="/orders" onClick={this.navigateToView} viewname = "Orders" className="list-group-item list-group-item-action bg-light" >Orders</Link>
+                        <Link to="/products" onClick={this.navigateToView} viewname = "Products" className="list-group-item list-group-item-action bg-light" >Products</Link>
+                        <Link to="/crm" className="list-group-item list-group-item-action bg-light" >CRM</Link>
+                        <Link to="/marketing" className="list-group-item list-group-item-action bg-light" >Marketing</Link>
+                        <Link to="/reports" className="list-group-item list-group-item-action bg-light" >Reports</Link>
                     </div>
                 </div>
             </div>
@@ -35,7 +41,8 @@ class Sidebar extends Component {
 
 const mapStateToProps = state => {
     return {
-        auth: state.auth
+        auth: state.auth,
+        currentView: state.viewRouteReducer.currentView
     }
 }
 export default connect(mapStateToProps)(Sidebar);

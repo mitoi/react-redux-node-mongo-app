@@ -14,6 +14,7 @@ import Home from './components/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dashboard from './components/Dashboard';
 import Orders from './components/Orders';
+import Products from './components/Products';
 
 if(localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -40,6 +41,7 @@ class App extends Component {
                   <Route exact path="/login" component={ Login } />
                   <Route path="/dashboard" component={ Dashboard } />
                   <Route path="/orders" component={ Orders } />
+                  <Route path="/products" component={ Products } />
                 </div>
             </div>
           </Router>
