@@ -2,25 +2,27 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Sidebar from './Sidebar';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import ContentManager from './ContentManager';
+import Orders from './Orders';
+import Dashboard from './Dashboard';
+import Products from './Products';
 
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+    
     render() {
         const { isAuthenticated, user } = this.props.auth;
-
+        const currentView = this.props.currentView;
+        console.log(currentView)
         return (
-            <div class="container" style={{marginLeft:'0px'}}>
-                <div class="row">
-                    <div class="col-sm-6" style={{marginLeft:'-15px'}}>
+            <div className="container" style={{marginLeft:'0px'}}>
+                <div className="row">
+                    <div className="col-sm-6" style={{marginLeft:'-15px'}}>
                         {isAuthenticated ? <Sidebar/> : (<div>Not logged in</div>)} 
                     </div>
-                    <div class="col-sm-6"> 
-                        <ContentManager />
+                    <div className="col-sm-6">                   
+                        {currentView == "Dashboard" && <Dashboard/>}
+                        {currentView == "Orders" && <Orders/>}
+                        {currentView == "Products" && <Products/>}
                     </div> 
                 </div>                
             </div>
@@ -30,7 +32,8 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
-        auth: state.auth
+        auth: state.auth,
+        currentView: state.viewRouteReducer.currentView
     }
 }
 export default connect(mapStateToProps)(Home);
