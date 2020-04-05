@@ -7,6 +7,11 @@ class Products extends Component{
         return (
             <div className="container" style={{marginLeft:'0px'}}>
                 <div className="row">
+                    <div className="col-sm-12">
+                        <button className="btn btn-secondary">Add Product</button>
+                    </div>
+                </div>
+                <div className="row">
                     <div className="col-sm-12"> 
                     Products Page
                     </div> 

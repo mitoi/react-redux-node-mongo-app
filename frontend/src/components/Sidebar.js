@@ -20,7 +20,7 @@ class Sidebar extends Component {
             <div className="d-flex" id="wrapper">
                 <div className="bg-light border-right" id="sidebar-wrapper">
                     <div className="sidebar-heading">
-                        <img src={require('../profile_pic.jpg')} alt={user.name} title={user.name}
+                        <img src={require('../rick_avatar.jpg')} alt={user.name} title={user.name}
                                     className="rounded-circle"
                                     style={{ width: '45px', marginRight: '15px'}} />
                         {user.name}
